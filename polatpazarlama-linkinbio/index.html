@@ -11,83 +11,115 @@
 <meta property="og:image" content="https://cdn.shopify.com/s/files/1/0847/5833/1617/files/studio_1_2_eed119f1-a869-44a5-9356-a33a8f827f00.png?v=1789102316">
 <meta property="og:url" content="https://polatpazarlama.netlify.app">
 <meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#f4f1ec;--ink:#2a2622;--muted:#6f675e;--accent:#b5603c;--card:#fff;--line:#e3ddd3}
-@media (prefers-color-scheme:dark){:root{--bg:#1d1a17;--ink:#f1ece4;--muted:#a79e92;--card:#26221e;--line:#363029}}
-*{box-sizing:border-box;margin:0}
-body{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--ink);max-width:520px;margin:0 auto;-webkit-font-smoothing:antialiased}
+:root{
+  --paper:#efebe3;--ink:#2b2420;--muted:#6e645b;--frame:#5a4a42;--card:rgba(255,255,255,.35);
+  --serif:"Cormorant Garamond",Georgia,serif;--sans:"Montserrat",system-ui,-apple-system,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--paper)}
+body{
+  font-family:var(--sans);color:var(--ink);min-height:100vh;-webkit-font-smoothing:antialiased;
+  background-color:var(--paper);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .3 0 0 0 0 .25 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
 a{color:inherit;text-decoration:none}
-.hero{display:block;position:relative;aspect-ratio:1/1;overflow:hidden}
-.hero img{width:100%;height:100%;object-fit:cover;display:block}
-.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(20,15,10,.7),rgba(20,15,10,.05) 60%)}
-.hero div{position:absolute;left:20px;right:20px;bottom:20px;z-index:1;color:#fff}
-.hero h1{font-size:28px;line-height:1.15;font-weight:700}
-.hero p{margin-top:6px;font-size:15px;opacity:.92}
-.pill{display:inline-block;margin-top:14px;background:var(--accent);color:#fff;font-size:12px;font-weight:700;letter-spacing:.08em;padding:9px 16px;border-radius:99px;text-transform:uppercase}
-.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin:2px 0}
-.tile{background:var(--card);padding:26px 8px 22px;text-align:center}
-.tile .ic{width:72px;height:72px;border-radius:50%;background:var(--accent);margin:0 auto 14px;display:grid;place-items:center;color:#fff}
-.tile svg{width:34px;height:34px}
-.tile span{display:inline-block;background:var(--accent);color:#fff;font-size:12px;font-weight:700;letter-spacing:.08em;padding:7px 16px;border-radius:99px}
-.sub{padding:26px 18px}
-.sub p{font-size:17px;margin-bottom:14px}
-.sub form{display:flex;gap:8px}
-.sub input{flex:1;min-width:0;padding:14px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink);font-size:16px}
-.sub button{padding:0 18px;border:0;border-radius:8px;background:var(--ink);color:var(--bg);font-size:16px;font-weight:600}
-.sub small{display:block;margin-top:12px;color:var(--muted);font-size:13px}
-h2{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:6px 18px 12px}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
-.grid a{position:relative;aspect-ratio:1/1;background:var(--card);display:block;overflow:hidden}
+.wrap{max-width:480px;margin:0 auto;padding:44px 16px 40px}
+
+/* header */
+header{text-align:center;margin-bottom:34px}
+.mono{width:92px;height:92px;border-radius:50%;margin:0 auto 18px;display:grid;place-items:center;
+  background:rgba(255,255,255,.45);box-shadow:0 0 0 1px rgba(90,74,66,.12)}
+.mono span{font-family:var(--serif);font-style:italic;font-size:40px;letter-spacing:-.06em;color:var(--ink);line-height:1}
+h1{font-family:var(--sans);font-weight:500;font-size:22px;letter-spacing:.12em;text-transform:uppercase}
+.tag{margin-top:8px;font-family:var(--serif);font-style:italic;font-size:18px;color:var(--muted)}
+
+/* buttons */
+.btn,.feat{display:block;border:2px solid var(--frame);border-radius:6px;background:var(--card);margin-bottom:14px;
+  transition:background .2s,transform .1s}
+.btn:active,.feat:active{transform:scale(.99)}
+@media (hover:hover){.btn:hover,.feat:hover{background:rgba(255,255,255,.7)}}
+.btn{padding:20px 16px;text-align:center;font-size:15px;font-weight:500;letter-spacing:.1em;text-transform:uppercase}
+.btn.primary{background:var(--frame);color:#f6f1ea}
+@media (hover:hover){.btn.primary:hover{background:#3f332d}}
+.feat .top{display:flex;gap:14px;align-items:center;padding:14px}
+.feat img{width:76px;height:76px;object-fit:cover;border-radius:6px;flex:none;background:#ddd5c9}
+.feat strong{display:block;font-weight:500;font-size:16px;letter-spacing:.02em}
+.feat em{display:block;margin-top:5px;font-style:normal;font-size:14px;color:var(--muted)}
+.feat .cta{border-top:1.5px solid var(--frame);padding:14px;text-align:center;font-size:14px;font-weight:500;letter-spacing:.1em;text-transform:uppercase}
+
+/* newsletter */
+details.btn{padding:0;cursor:pointer}
+details.btn summary{list-style:none;padding:20px 16px}
+details.btn summary::-webkit-details-marker{display:none}
+details form{display:flex;gap:8px;padding:0 14px 16px}
+details input[type=email]{flex:1;min-width:0;padding:13px;border:1.5px solid var(--frame);border-radius:4px;background:#fffdf9;
+  font:16px var(--sans);color:var(--ink);letter-spacing:0;text-transform:none}
+details button{padding:0 16px;border:0;border-radius:4px;background:var(--frame);color:#f6f1ea;font:500 13px var(--sans);letter-spacing:.08em}
+details small{display:block;padding:0 14px 16px;font-size:12px;color:var(--muted);letter-spacing:0;text-transform:none;font-weight:400}
+
+/* grid */
+h2{margin:38px 0 14px;text-align:center;font-family:var(--serif);font-style:italic;font-weight:500;font-size:22px;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.grid a{position:relative;aspect-ratio:1/1;border-radius:4px;overflow:hidden;background:#ddd5c9}
 .grid img{width:100%;height:100%;object-fit:cover;display:block}
-.grid b{position:absolute;left:6px;bottom:6px;background:rgba(255,255,255,.92);color:#222;font-size:11px;padding:3px 7px;border-radius:99px}
-footer{padding:28px 18px 40px;text-align:center;color:var(--muted);font-size:13px}
+.grid b{position:absolute;left:5px;bottom:5px;background:rgba(246,241,234,.92);color:var(--ink);font-size:10.5px;font-weight:500;padding:3px 7px;border-radius:99px}
+footer{margin-top:34px;text-align:center;font-size:12px;letter-spacing:.06em;color:var(--muted)}
 </style>
 </head>
 <body>
-<a class="hero" href="https://www.polatpazarlama.com/collections/all">
-  <img src="https://cdn.shopify.com/s/files/1/0847/5833/1617/files/studio_1_2_eed119f1-a869-44a5-9356-a33a8f827f00.png?v=1789102316" alt="Polat Pazarlama doğal taş ürünleri">
-  <div>
-    <h1>Doğal taşın ve el işçiliğinin sakin gücü.</h1>
-    <p>Lavabolar, vazolar ve dekoratif ürünler — her parça tek.</p>
-    <span class="pill">Tüm Ürünleri Keşfet</span>
+<div class="wrap">
+
+  <header>
+    <div class="mono"><span>PP</span></div>
+    <h1>Polat Pazarlama</h1>
+    <p class="tag">Doğal taş &amp; el işçiliği — her parça tek</p>
+  </header>
+
+  <a class="feat" href="https://www.polatpazarlama.com/collections/vazolar">
+    <div class="top">
+      <img src="https://cdn.shopify.com/s/files/1/0847/5833/1617/files/polat-dsf1819-studio.png?v=1790275619" alt="El yapımı sanatsal vazo">
+      <div><strong>Yeni: El Yapımı Sanatsal Vazolar</strong><em>Koleksiyonu keşfet</em></div>
+    </div>
+    <div class="cta">Şimdi İncele</div>
+  </a>
+
+  <a class="btn primary" href="https://wa.me/905335261499?text=Merhaba%2C%20teklif%20almak%20istiyorum">WhatsApp'tan Teklif Al</a>
+  <a class="btn" href="https://www.polatpazarlama.com/collections/dogal-tas-lavabolar">Doğal Taş Lavabolar</a>
+  <a class="btn" href="https://www.polatpazarlama.com/collections/el-yapimi-lavabolar">El Yapımı Porselen Lavabolar</a>
+  <a class="btn" href="https://www.polatpazarlama.com/collections/vazolar">El Yapımı Vazolar</a>
+  <a class="btn" href="https://www.polatpazarlama.com/collections/all">Tüm Ürünler</a>
+  <a class="btn" href="https://wa.me/905335261499?text=Merhaba%2C%20mimar%20%2F%20toptan%20i%C5%9Fbirli%C4%9Fi%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum">Mimar &amp; Toptan İşbirliği</a>
+
+  <details class="btn">
+    <summary>Yeniliklerden Haberdar Ol</summary>
+    <form action="https://www.polatpazarlama.com/contact#contact_form" method="post">
+      <input type="hidden" name="form_type" value="customer">
+      <input type="hidden" name="utf8" value="✓">
+      <input type="hidden" name="contact[tags]" value="newsletter">
+      <input type="email" name="contact[email]" placeholder="E-posta adresi" required>
+      <button type="submit">ABONE OL</button>
+    </form>
+    <small>E-posta adresini göndererek Gizlilik Politikamızı kabul edersin.</small>
+  </details>
+
+  <h2>Instagram'da gördüklerin</h2>
+  <div class="grid">
+    <a href="https://www.polatpazarlama.com/products/yuvarlak-lavabo-45cm-0858"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0847/5833/1617/files/studio_1_2_eed119f1-a869-44a5-9356-a33a8f827f00.png?v=1789102316" alt="Traverten yuvarlak lavabo"><b>₺6.000</b></a>
+    <a href="https://www.polatpazarlama.com/products/dekoratif-vazo-siyah-altin-tonlu-1819"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0847/5833/1617/files/polat-dsf1819-studio.png?v=1790275619" alt="Siyah altın vazo"><b>₺17.000</b></a>
+    <a href="https://www.polatpazarlama.com/products/yuvarlak-lavabo-42cm-0834"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0847/5833/1617/files/studio_83f9cd1d-5bb0-4e09-8943-f95ae68e8d09.png?v=1789102275" alt="Keski yivli lavabo"><b>₺11.500</b></a>
+    <a href="https://www.polatpazarlama.com/products/organik-form-lavabo-kahverengi-damarli-1739"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0847/5833/1617/files/polat-dsf1739-studio.jpg?v=1790220487" alt="Organik form lavabo"><b>₺22.000</b></a>
+    <a href="https://www.polatpazarlama.com/products/dekoratif-vazo-mavi-bakir-tonlu-1806"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0847/5833/1617/files/polat-dsf1806-studio.jpg?v=1790220540" alt="Mavi bakır tonlu vazo"><b>₺17.000</b></a>
+    <a href="https://www.polatpazarlama.com/products/el-yapimi-porselen-dalgali-kenarli-lavabo-beyaz-1727"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0847/5833/1617/files/polat-dsf1727-studio.jpg?v=1790220477" alt="Porselen lavabo beyaz"><b>₺14.000</b></a>
+    <a href="https://www.polatpazarlama.com/products/el-yapimi-porselen-serbest-form-lavabo-koyu-yesil-1731"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0847/5833/1617/files/polat-dsf1731-studio.jpg?v=1790220480" alt="Serbest form lavabo koyu yeşil"><b>₺14.000</b></a>
+    <a href="https://www.polatpazarlama.com/products/dekoratif-vazo-gri-amfora-formlu-1841"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0847/5833/1617/files/polat-dsf1841-studio.jpg?v=1790220547" alt="Gri amfora vazo"><b>₺19.000</b></a>
+    <a href="https://www.polatpazarlama.com/products/serbest-form-lavabo-ham-gorunumlu-kenarli-0915"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0847/5833/1617/files/polat-dsf0915-studio.jpg?v=1790220364" alt="Ham kaya kenarlı lavabo"><b>₺10.500</b></a>
   </div>
-</a>
 
-<div class="tiles">
-  <a class="tile" href="https://www.polatpazarlama.com/collections/all">
-    <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8h12l-1 12H7L6 8z"/><path d="M9 8a3 3 0 016 0"/></svg></div><span>MAĞAZA</span></a>
-  
-  <a class="tile" href="https://wa.me/905335261499?text=Merhaba%2C%20teklif%20almak%20istiyorum">
-    <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 01-11.8 7L4 20l1.1-4.9A8 8 0 1121 12z"/></svg></div><span>TEKLİF AL</span></a>
-  <a class="tile" href="https://www.instagram.com/polatpazarlama/reels/">
-    <div class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div><span>İZLE</span></a>
+  <footer>© Polat Pazarlama · polatpazarlama.com</footer>
 </div>
-
-<section class="sub">
-  <p>Yeni parçalar ve özel fırsatlar — doğrudan e-postana.</p>
-  <form action="https://www.polatpazarlama.com/contact#contact_form" method="post">
-    <input type="hidden" name="form_type" value="customer">
-    <input type="hidden" name="utf8" value="✓">
-    <input type="hidden" name="contact[tags]" value="newsletter">
-    <input type="email" name="contact[email]" placeholder="E-posta adresi" required>
-    <button type="submit">Abone Ol</button>
-  </form>
-  <small>E-posta adresini göndererek Gizlilik Politikamızı kabul edersin.</small>
-</section>
-
-<h2>Instagram'da gördüklerin</h2>
-<div class="grid">
-  <a href="https://www.polatpazarlama.com/products/yuvarlak-lavabo-45cm-0858"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0847/5833/1617/files/studio_1_2_eed119f1-a869-44a5-9356-a33a8f827f00.png?v=1789102316" alt="Traverten yuvarlak lavabo"><b>₺6.000</b></a>
-  <a href="https://www.polatpazarlama.com/products/yuvarlak-lavabo-42cm-0834"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0847/5833/1617/files/studio_83f9cd1d-5bb0-4e09-8943-f95ae68e8d09.png?v=1789102275" alt="Keski yivli lavabo"><b>₺11.500</b></a>
-  <a href="https://www.polatpazarlama.com/products/organik-form-lavabo-kahverengi-damarli-1739"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0847/5833/1617/files/polat-dsf1739-studio.jpg?v=1790220487" alt="Organik form lavabo"><b>₺22.000</b></a>
-  <a href="https://www.polatpazarlama.com/products/el-yapimi-porselen-dalgali-kenarli-lavabo-beyaz-1727"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0847/5833/1617/files/polat-dsf1727-studio.jpg?v=1790220477" alt="Porselen lavabo beyaz"><b>₺14.000</b></a>
-  <a href="https://www.polatpazarlama.com/products/dekoratif-vazo-mavi-bakir-tonlu-1806"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0847/5833/1617/files/polat-dsf1806-studio.jpg?v=1790220540" alt="Mavi bakır tonlu vazo"><b>₺17.000</b></a>
-  <a href="https://www.polatpazarlama.com/products/el-yapimi-porselen-serbest-form-lavabo-koyu-yesil-1731"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0847/5833/1617/files/polat-dsf1731-studio.jpg?v=1790220480" alt="Serbest form lavabo koyu yeşil"><b>₺14.000</b></a>
-  <a href="https://www.polatpazarlama.com/products/dekoratif-vazo-gri-amfora-formlu-1841"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0847/5833/1617/files/polat-dsf1841-studio.jpg?v=1790220547" alt="Gri amfora vazo"><b>₺19.000</b></a>
-  <a href="https://www.polatpazarlama.com/products/serbest-form-lavabo-ham-gorunumlu-kenarli-0915"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0847/5833/1617/files/polat-dsf0915-studio.jpg?v=1790220364" alt="Ham kaya kenarlı lavabo"><b>₺10.500</b></a>
-  <a href="https://www.polatpazarlama.com/products/dekoratif-vazo-siyah-altin-tonlu-1819"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0847/5833/1617/files/polat-dsf1819-studio.png?v=1790275619" alt="Siyah altın vazo"><b>₺17.000</b></a>
-</div>
-
-<footer>© Polat Pazarlama · polatpazarlama.com</footer>
 </body>
 </html>
